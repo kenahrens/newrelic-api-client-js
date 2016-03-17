@@ -1,7 +1,11 @@
 var request = require('request');
 
 // Read the config file
-var config = require('./config.json');
+// var config = require('./config.json');
+var config = {
+  ACCOUNT_ID: process.env.NEWRELIC_ACCOUNT_ID,
+  REST_API_KEY: process.env.NEWRELIC_REST_API_KEY
+}
 
 // Define the initial API
 var api = {};

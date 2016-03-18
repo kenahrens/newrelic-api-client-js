@@ -1,4 +1,4 @@
-# newrelic-api-test-js
+# newrelic-api-test-js [![Build Status](https://travis-ci.org/kenahrens/newrelic-api-test-js.svg?branch=master)](https://travis-ci.org/kenahrens/newrelic-api-test-js)
 JavaScript library to test connectivity to New Relic API
 
 # How to use

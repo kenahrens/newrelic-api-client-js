@@ -2,7 +2,7 @@ var api = require('./api.js');
 
 // Callback
 var callback = function(error, response, body) {
-  if (!error && response.statusCode == 200) {
+  if (!error && response.statusCode === 200) {
     var applications = body.applications;
     for(var i=0; i < applications.length; i++) {
       var app = applications[i];

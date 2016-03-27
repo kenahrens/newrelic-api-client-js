@@ -2,7 +2,8 @@
   "name": "newrelic-api-test",
   "version": "0.0.1",
   "description": "JavaScript library to test connectivity to New Relic API",
-  
+  "repository": "https://github.com/kenahrens/newrelic-api-test-js",
+  "license": "MIT",
   "dependencies": {
     "request": "~2.69.0"
   },

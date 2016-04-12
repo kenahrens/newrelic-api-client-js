@@ -3,7 +3,9 @@ JavaScript library to test connectivity to New Relic API
 
 # How to use
 This is just a simple library to test connectivity between NodeJS and New Relic API.
-* Clone the repository and run npm install which should install dependencies into node_modules
+
+### Initial Setup
+Clone the repository and run npm install which should install dependencies into node_modules
 ```
 kahrens@kenbook8u:~/dev/node$ git clone https://github.com/kenahrens/newrelic-api-test-js.git
 ...
@@ -11,10 +13,13 @@ kahrens@kenbook8u:~/dev/node$ cd newrelic-api-test
 kahrens@kenbook8u:~/dev/node/newrelic-api-test$ npm install
 ```
 
-* Set 2 environment variables to the correct values for your account (can verify with [https://rpm.newrelic.com/apikeys])
-  * NEWRELIC_ACCOUNT_ID
-  * NEWRELIC_REST_API_KEY
-* Now you can execute the test, and you should see a list of your apps and their health status (green, yellow, red, gray)
+### Environment
+Set 2 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
+* NEWRELIC_ACCOUNT_ID
+* NEWRELIC_REST_API_KEY
+
+### Execute Test
+Now you can execute the test, and you should see a list of your apps and their health status (green, yellow, red, gray)
 
 ```
 kahrens:newrelic-api-test-js kahrens$ npm test

@@ -7,8 +7,12 @@
   "dependencies": {
     "request": "~2.69.0"
   },
-
   "scripts": {
-    "test": "node ./index.js"
+    "start": "node ./index.js",
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
   }
 }

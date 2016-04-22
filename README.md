@@ -54,3 +54,9 @@ kahrens:newrelic-api-test-js kahrens$ npm test
 
   1 passing (36ms)
 ```
+
+### To Do
+
+* Add Insights test scenario
+* Add more APIs
+* Simulation for New Relic API

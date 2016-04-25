@@ -1,7 +1,8 @@
 var api = require('./api.js');
+var insights = require('./insights.js');
 
 // Callback
-var callback = function(error, response, body) {
+var appCB = function(error, response, body) {
   if (!error && response.statusCode === 200) {
     var applications = body.applications;
     for(var i=0; i < applications.length; i++) {
@@ -12,8 +13,30 @@ var callback = function(error, response, body) {
 
       console.log(name + '(' + id + ') is ' + health);
     }
+  } else {
+    console.log('Application API Error!');
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(response.statusCode);
+    }
+  }
+}
+
+var nrql = 'SELECT count(*) FROM Transaction';
+var insightsCB = function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+    console.log('Insights Transactions = ' + body.results[0].count);
+  } else {
+    console.log('Insights API Error!');
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(response.statusCode);
+    }
   }
 }
 
 // Read config file
-api.applicationList(callback);
+api.applicationList(appCB);
+insights.query(nrql, insightsCB);

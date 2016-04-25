@@ -10,14 +10,12 @@ describe('newrelic-api-test', function() {
   beforeEach(function(){
 
   });
-  it('calls the application api', function() {
-    var callback = function(error, response, body) {
+  it('calls the application api', function(done) {
+    api.applicationList(function(error, response, body) {
       assert.equal(error, null);
       assert.equal(response.statusCode, 200);
-    }
-
-    // Read config file
-    api.applicationList(callback);
+      done();
+    });
   });
   after(function() {
 
@@ -28,17 +26,13 @@ describe('insights-test', function() {
   before(function(){
 
   });
-  beforeEach(function(){
-
-  });
-  it('calls the query api', function() {
-    var callback = function(error, response, body) {
+  it('calls the query api', function(done) {
+    var nrql = 'SELECT count(*) FROM ARG';
+    insights.query(nrql, function(error, response, body) {
       assert.equal(error, null);
       assert.equal(response.statusCode, 200);
-    }
-
-    // Read config file
-    api.applicationList(callback);
+      done();
+    });
   });
   after(function() {
 

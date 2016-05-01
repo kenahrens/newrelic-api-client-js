@@ -13,8 +13,8 @@ kahrens@kenbook8u:~/dev/node$ cd newrelic-api-test
 kahrens@kenbook8u:~/dev/node/newrelic-api-test$ npm install
 ```
 
-### Environment
-Set 2 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
+### Environment Variables
+Set 3 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
 * NEWRELIC_ACCOUNT_ID
 * NEWRELIC_REST_API_KEY
 * NEWRELIC_INSIGHTS_QUERY_KEY

@@ -3,7 +3,9 @@ const config = require('./config');
 
 // Define the initial API
 var api = {};
-api.applicationList = function applicationList(cb) {
+
+// Applications List
+api.applicationsList = function applicationList(cb) {
   var options = {
     'method': 'GET',
     'uri': 'https://api.newrelic.com/v2/applications.json',
@@ -14,5 +16,9 @@ api.applicationList = function applicationList(cb) {
   // Call the API
   request(options, cb);
 }
+
+// TODO: Servers List
+
+// TODO: Users List
 
 module.exports = api;

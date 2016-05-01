@@ -37,6 +37,6 @@ var insightsCB = function(error, response, body) {
   }
 }
 
-// Read config file
-api.applicationList(appCB);
+// Run the queries
+api.applicationsList(appCB);
 insights.query(nrql, insightsCB);

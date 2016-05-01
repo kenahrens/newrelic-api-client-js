@@ -10,8 +10,8 @@ describe('newrelic-api-test', function() {
   beforeEach(function(){
 
   });
-  it('calls the application api', function(done) {
-    api.applicationList(function(error, response, body) {
+  it('calls the applications api', function(done) {
+    api.applicationsList(function(error, response, body) {
       assert.equal(error, null);
       assert.equal(response.statusCode, 200);
       done();

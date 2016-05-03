@@ -14,10 +14,11 @@ kahrens@kenbook8u:~/dev/node/newrelic-api-test$ npm install
 ```
 
 ### Environment Variables
-Set 3 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
-* NEWRELIC_ACCOUNT_ID
-* NEWRELIC_REST_API_KEY
-* NEWRELIC_INSIGHTS_QUERY_KEY
+Set 4 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
+* NEWRELIC_ACCOUNT_ID - you will also see this in the URL bar
+* NEWRELIC_REST_API_KEY - overall REST Key (legacy)
+* NEWRELIC_ADMIN_API_KEY - specific Admin user API Key, used for certain API calls
+* NEWRELIC_INSIGHTS_QUERY_KEY - there are keys just for Insights in the Manage Data section
 
 ### Execute Script
 Now you can execute the script, and you should see a response from an Insights query as well as a list of your apps and their health status (green, yellow, red, gray)

@@ -1,5 +1,6 @@
 var api = require('../api.js');
 var insights = require('../insights.js');
+var synthetics = require('../synthetics.js');
 
 var assert = require('assert');
 
@@ -19,6 +20,16 @@ describe('newrelic-api-test', function() {
   });
   after(function() {
 
+  });
+});
+
+describe('synthetics-test', function() {
+  it('calls the synthetics api', function(done) {
+    synthetics.getAllMonitors(function(error, response, body) {
+      assert.equal(error, null);
+      assert.equal(response.statusCode, 200);
+      done();
+    })
   });
 });
 

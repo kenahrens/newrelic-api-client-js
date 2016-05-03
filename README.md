@@ -51,13 +51,16 @@ kahrens:newrelic-api-test-js kahrens$ npm test
 
 
   newrelic-api-test
-    ✓ calls the application api (365ms)
+    ✓ calls the applications api (463ms)
+
+  synthetics-test
+    ✓ calls the synthetics api (1021ms)
 
   insights-test
-    ✓ calls the query api (249ms)
+    ✓ calls the query api (487ms)
 
 
-  2 passing (625ms)
+  3 passing (2s)
 ```
 
 ### To Do

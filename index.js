@@ -1,6 +1,6 @@
-var api = require('./api.js');
-var insights = require('./insights.js');
-var synthetics = require('./synthetics.js');
+var api = require('./lib/api.js');
+var insights = require('./lib/insights.js');
+var synthetics = require('./lib/synthetics.js');
 
 // Callback
 var appCB = function(error, response, body) {

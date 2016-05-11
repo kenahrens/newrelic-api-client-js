@@ -5,12 +5,6 @@ var synthetics = require('../lib/synthetics.js');
 var assert = require('assert');
 
 describe('newrelic-api-test', function() {
-  before(function(){
-
-  });
-  beforeEach(function(){
-
-  });
   it('calls the applications api', function(done) {
     api.applicationsList(function(error, response, body) {
       assert.equal(error, null);
@@ -18,8 +12,12 @@ describe('newrelic-api-test', function() {
       done();
     });
   });
-  after(function() {
-
+  it('calls the servers api', function(done) {
+    api.serversList(function(error, response, body) {
+      assert.equal(error, null);
+      assert.equal(response.statusCode, 200);
+      done();
+    });
   });
 });
 
@@ -34,9 +32,6 @@ describe('synthetics-test', function() {
 });
 
 describe('insights-test', function() {
-  before(function(){
-
-  });
   it('calls the query api', function(done) {
     var nrql = 'SELECT count(*) FROM ARG';
     insights.query(nrql, function(error, response, body) {
@@ -44,9 +39,6 @@ describe('insights-test', function() {
       assert.equal(response.statusCode, 200);
       done();
     });
-  });
-  after(function() {
-
   });
 });
 

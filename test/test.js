@@ -6,14 +6,14 @@ var assert = require('assert');
 
 describe('newrelic-api-test', function() {
   it('calls the applications api', function(done) {
-    api.applicationsList(function(error, response, body) {
+    api.applications.list(function(error, response, body) {
       assert.equal(error, null);
       assert.equal(response.statusCode, 200);
       done();
     });
   });
   it('calls the servers api', function(done) {
-    api.serversList(function(error, response, body) {
+    api.servers.list(function(error, response, body) {
       assert.equal(error, null);
       assert.equal(response.statusCode, 200);
       done();

@@ -53,7 +53,7 @@ var syntheticsCB = function(error, response, body) {
 
 // Run the queries
 console.log('Details from the API calls');
-api.applicationsList(appCB);
-api.serversList(serverCB);
+api.applications.list(appCB);
+api.servers.list(serverCB);
 insights.query(nrql, insightsCB);
 synthetics.getAllMonitors(syntheticsCB);

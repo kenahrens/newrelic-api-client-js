@@ -11,18 +11,18 @@ var quickAssert = function(error, response) {
 
 describe('newrelic-api-test', function() {
   it('calls the applications api', function(done) {
-    api.applications.list(function(error, response, body) {
+    api.apps.list(function(error, response, body) {
       quickAssert(error, response);
       done();
     });
   });
   it('gets a specific application', function(done) {
-    api.applications.list(function(error, response, body) {
+    api.apps.list(function(error, response, body) {
       quickAssert(error, response);
 
       // Get the first app in the list
       var appId = body.applications[0].id;
-      api.applications.show(appId, function(error, response, body) {
+      api.apps.show(appId, function(error, response, body) {
         quickAssert(error, response);
         done();
       });

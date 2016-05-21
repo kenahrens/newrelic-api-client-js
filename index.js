@@ -51,8 +51,6 @@ var syntheticsCB = function(error, response, body) {
   }
 }
 
-console.log(api);
-
 // Run the queries
 console.log('Details from the API calls');
 api.apps.list(appCB);

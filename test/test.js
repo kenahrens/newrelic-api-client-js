@@ -28,6 +28,19 @@ describe('newrelic-api-test', function() {
       });
     });
   });
+
+  it('gets the hosts for a specific application', function(done) {
+    api.apps.list(function(error, response, body) {
+      quickAssert(error, response);
+
+      // Get the first app in the list
+      var appId = body.applications[0].id;
+      api.appHosts.list(appId, function(error, response, body) {
+        quickAssert(error, response);
+        done();
+      });
+    });
+  });
   it('calls the servers api', function(done) {
     api.servers.list(function(error, response, body) {
       quickAssert(error, response);

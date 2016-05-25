@@ -57,6 +57,13 @@ describe('New Relic API Test', function() {
     });
   });
 
+  it('calls the mobile api', function(done) {
+    api.mobile.list(function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+  
   it('calls the servers api', function(done) {
     api.servers.list(function(error, response, body) {
       quickAssert(error, response);

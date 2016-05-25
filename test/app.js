@@ -63,6 +63,27 @@ describe('New Relic API Test', function() {
       done();
     });
   });
+
+  it('calls the browser api', function(done) {
+    api.browser.list(function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+
+  it('calls the keyTransactions api', function(done) {
+    api.keyTransactions.list(function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+
+  it('calls the usages api', function(done) {
+    api.usages.list(function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
   
   it('calls the servers api', function(done) {
     api.servers.list(function(error, response, body) {

@@ -6,6 +6,10 @@ var assert = require('assert');
 
 var quickAssert = function(error, response) {
   assert.equal(error, null);
+  if(response.statusCode != 200) {
+    console.log('ERROR!!!!!!!!'); 
+    console.log(response.body);
+  }
   assert.equal(response.statusCode, 200);
 }
 
@@ -78,13 +82,13 @@ describe('New Relic API Test', function() {
     });
   });
 
-  it('calls the usages api', function(done) {
-    api.usages.list(function(error, response, body) {
+  it('calls the usages api for apm', function(done) {
+    api.usages.list('apm', function(error, response, body) {
       quickAssert(error, response);
       done();
     });
   });
-  
+
   it('calls the servers api', function(done) {
     api.servers.list(function(error, response, body) {
       quickAssert(error, response);

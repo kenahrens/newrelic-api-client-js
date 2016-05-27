@@ -35,6 +35,11 @@
     "usages": {
       "list": "https://api.newrelic.com/v2/usages/{product}.json"
     },
+    "users": {
+      "list": "https://api.newrelic.com/v2/users.json",
+      "show": "https://api.newrelic.com/v2/users/{id}.json",
+      "resetPassword": "https://api.newrelic.com/v2/users/{id}/reset_password.json"
+    },
     "servers": {
       "list": "https://api.newrelic.com/v2/servers.json",
       "show": "https://api.newrelic.com/v2/servers/{application_id}.json",

@@ -110,6 +110,20 @@ describe('New Relic API Test', function() {
     });
   });
 
+
+  it('gets the component for a specific plugin', function(done) {
+    api.plugins.list(function(error, response, body) {
+      quickAssert(error, response);
+
+      // Get the first app in the list
+      var pluginId = body.plugins[0].id;
+      api.pluginComponents.list(pluginId, function(error, response, body) {
+        quickAssert(error, response);
+        done();
+      });
+    });
+  });
+
 });
 
 

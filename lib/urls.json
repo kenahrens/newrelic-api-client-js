@@ -49,6 +49,12 @@
     "plugins": {
       "list": "https://api.newrelic.com/v2/plugins.json",
       "show": "https://api.newrelic.com/v2/plugins/{id}.json"
+    },
+    "pluginComponents": {
+      "list": "https://api.newrelic.com/v2/components.json",
+      "show": "https://api.newrelic.com/v2/components/{component_id}.json",
+      "metricNames": "https://api.newrelic.com/v2/components/{component_id}/metrics.json",
+      "metricData": "https://api.newrelic.com/v2/components/{component_id}/metrics/data.json"
     }
   }
 }

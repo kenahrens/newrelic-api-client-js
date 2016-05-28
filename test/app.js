@@ -82,6 +82,13 @@ describe('New Relic API Test', function() {
     });
   });
 
+  it('calls the servers api', function(done) {
+    api.servers.list(function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+
   it('calls the usages api for apm', function(done) {
     api.usages.list('apm', function(error, response, body) {
       quickAssert(error, response);
@@ -96,12 +103,13 @@ describe('New Relic API Test', function() {
     });
   });
 
-  it('calls the servers api', function(done) {
-    api.servers.list(function(error, response, body) {
+  it('calls the plugins api', function(done) {
+    api.plugins.list(function(error, response, body) {
       quickAssert(error, response);
       done();
     });
   });
+
 });
 
 

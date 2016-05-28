@@ -32,6 +32,12 @@
       "list": "https://api.newrelic.com/v2/key_transactions.json",
       "show": "https://api.newrelic.com/v2/key_transactions/{id}.json"
     },
+    "servers": {
+      "list": "https://api.newrelic.com/v2/servers.json",
+      "show": "https://api.newrelic.com/v2/servers/{application_id}.json",
+      "metricNames": "https://api.newrelic.com/v2/servers/{application_id}/metrics.json",
+      "metricData": "https://api.newrelic.com/v2/servers/{application_id}/metrics/data.json"
+    },
     "usages": {
       "list": "https://api.newrelic.com/v2/usages/{product}.json"
     },
@@ -40,11 +46,9 @@
       "show": "https://api.newrelic.com/v2/users/{id}.json",
       "resetPassword": "https://api.newrelic.com/v2/users/{id}/reset_password.json"
     },
-    "servers": {
-      "list": "https://api.newrelic.com/v2/servers.json",
-      "show": "https://api.newrelic.com/v2/servers/{application_id}.json",
-      "metricNames": "https://api.newrelic.com/v2/servers/{application_id}/metrics.json",
-      "metricData": "https://api.newrelic.com/v2/servers/{application_id}/metrics/data.json"
+    "plugins": {
+      "list": "https://api.newrelic.com/v2/plugins.json",
+      "show": "https://api.newrelic.com/v2/plugins/{id}.json"
     }
   }
 }

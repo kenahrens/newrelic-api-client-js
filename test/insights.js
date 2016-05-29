@@ -10,6 +10,8 @@ var quickAssert = function(error, response) {
 }
 
 describe('New Relic Insights API Test', function() {
+  this.timeout(10000);
+  
   it('calls the query api', function(done) {
     var nrql = 'SELECT count(*) FROM Transaction';
     insights.query(nrql, function(error, response, body) {
@@ -18,4 +20,3 @@ describe('New Relic Insights API Test', function() {
     });
   });
 });
-

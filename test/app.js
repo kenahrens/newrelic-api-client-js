@@ -7,13 +7,14 @@ var assert = require('assert');
 var quickAssert = function(error, response) {
   assert.equal(error, null);
   if(response.statusCode != 200) {
-    console.log('ERROR!!!!!!!!'); 
+    console.log('ERROR!!!!!!!!');
     console.log(response.body);
   }
   assert.equal(response.statusCode, 200);
 }
 
 describe('New Relic API Test', function() {
+  this.timeout(10000);
 
   it('calls the applications api', function(done) {
     api.apps.list(function(error, response, body) {
@@ -138,5 +139,3 @@ describe('New Relic API Test', function() {
   });
 
 });
-
-

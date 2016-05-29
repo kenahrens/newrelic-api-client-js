@@ -35,6 +35,19 @@ describe('New Relic API Test', function() {
     });
   });
 
+  it('gets the metricNames for a specific application', function(done) {
+    api.apps.list(function(error, response, body) {
+      quickAssert(error, response);
+
+      // Get the first app in the list
+      var appId = body.applications[0].id;
+      api.apps.metricNames(appId, function(error, response, body) {
+        quickAssert(error, response);
+        done();
+      });
+    });
+  });
+
   it('gets the hosts for a specific application', function(done) {
     api.apps.list(function(error, response, body) {
       quickAssert(error, response);

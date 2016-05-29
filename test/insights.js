@@ -11,7 +11,7 @@ var quickAssert = function(error, response) {
 
 describe('New Relic Insights API Test', function() {
   it('calls the query api', function(done) {
-    var nrql = 'SELECT count(*) FROM ARG';
+    var nrql = 'SELECT count(*) FROM Transaction';
     insights.query(nrql, function(error, response, body) {
       quickAssert(error, response);
       done();

@@ -13,7 +13,9 @@ var quickAssert = function(error, response) {
   assert.equal(response.statusCode, 200);
 }
 
+// Global variables
 var appId = 0;
+var pluginId = 0;
 
 describe('New Relic API Test', function() {
   this.timeout(10000);
@@ -30,68 +32,38 @@ describe('New Relic API Test', function() {
   });
 
   it('gets a specific application', function(done) {
-    api.apps.list(function(error, response, body) {
+    api.apps.show(appId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var appId = body.applications[0].id;
-      api.apps.show(appId, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 
   it('gets the metricNames for a specific application', function(done) {
-    api.apps.list(function(error, response, body) {
+    api.apps.metricNames(appId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var appId = body.applications[0].id;
-      api.apps.metricNames(appId, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 
   it('gets the metricData for a specific application', function(done) {
-    api.apps.list(function(error, response, body) {
+    var names = 'Agent/MetricsReported/count';
+    api.apps.metricData(appId, names, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var appId = body.applications[0].id;
-      var names = 'Agent/MetricsReported/count';
-      api.apps.metricData(appId, names, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 
   it('gets the hosts for a specific application', function(done) {
-    api.apps.list(function(error, response, body) {
+    api.appHosts.list(appId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var appId = body.applications[0].id;
-      api.appHosts.list(appId, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 
   it('gets the instances for a specific application', function(done) {
-    api.apps.list(function(error, response, body) {
+    api.appInstances.list(appId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var appId = body.applications[0].id;
-      api.appInstances.list(appId, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 
@@ -140,21 +112,19 @@ describe('New Relic API Test', function() {
   it('calls the plugins api', function(done) {
     api.plugins.list(function(error, response, body) {
       quickAssert(error, response);
+
+      // Get the first plugin in the list
+      pluginId = body.plugins[0].id;
+
       done();
     });
   });
 
 
   it('gets the component for a specific plugin', function(done) {
-    api.plugins.list(function(error, response, body) {
+    api.pluginComponents.list(pluginId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first app in the list
-      var pluginId = body.plugins[0].id;
-      api.pluginComponents.list(pluginId, function(error, response, body) {
-        quickAssert(error, response);
-        done();
-      });
+      done();
     });
   });
 

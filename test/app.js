@@ -13,12 +13,18 @@ var quickAssert = function(error, response) {
   assert.equal(response.statusCode, 200);
 }
 
+var appId = 0;
+
 describe('New Relic API Test', function() {
   this.timeout(10000);
 
   it('calls the applications api', function(done) {
     api.apps.list(function(error, response, body) {
       quickAssert(error, response);
+
+      // Get the first app in the list
+      appId = body.applications[0].id;
+
       done();
     });
   });
@@ -43,6 +49,20 @@ describe('New Relic API Test', function() {
       // Get the first app in the list
       var appId = body.applications[0].id;
       api.apps.metricNames(appId, function(error, response, body) {
+        quickAssert(error, response);
+        done();
+      });
+    });
+  });
+
+  it('gets the metricData for a specific application', function(done) {
+    api.apps.list(function(error, response, body) {
+      quickAssert(error, response);
+
+      // Get the first app in the list
+      var appId = body.applications[0].id;
+      var names = 'Agent/MetricsReported/count';
+      api.apps.metricData(appId, names, function(error, response, body) {
         quickAssert(error, response);
         done();
       });

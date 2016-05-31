@@ -43,27 +43,35 @@ Insights Transactions = 6402
 ### Execute Tests
 You can also run the test cases which is a way to double check things are configured properly.
 ```
-kahrens:newrelic-api-test-js kahrens$ npm test
+kahrens:newrelic-api-client-js kahrens$ npm test
 
-> newrelic-api-test@0.0.1 test /Users/kahrens/Documents/github/newrelic-api-test-js
+> newrelic-api-test@0.0.1 test /Users/kahrens/Documents/github/newrelic-api-client-js
 > ./node_modules/mocha/bin/mocha
 
 
 
-  newrelic-api-test
-    ✓ calls the applications api (463ms)
+  New Relic API Test
+    ✓ calls the applications api (293ms)
+    ✓ gets a specific application (183ms)
+    ✓ gets the metricNames for a specific application (282ms)
+    ✓ gets the metricData for a specific application (225ms)
+    ✓ gets the hosts for a specific application (212ms)
+    ✓ gets the instances for a specific application (210ms)
+    ✓ calls the mobile api (212ms)
+    ✓ calls the browser api (412ms)
+    ✓ calls the keyTransactions api (178ms)
+    ✓ calls the servers api (188ms)
+    ✓ calls the usages api for apm (193ms)
+    ✓ calls the users api (167ms)
+    ✓ calls the plugins api (227ms)
+    ✓ gets the component for a specific plugin (292ms)
 
-  synthetics-test
-    ✓ calls the synthetics api (1021ms)
+  New Relic Insights API Test
+    ✓ calls the query api (272ms)
 
-  insights-test
-    ✓ calls the query api (487ms)
+  New Relic Synthetics API Test
+    ✓ calls the synthetics api (673ms)
 
 
-  3 passing (2s)
+  16 passing (4s)
 ```
-
-### To Do
-
-* Add more APIs
-* Simulation for New Relic API

@@ -18,7 +18,7 @@ var appId = 0;
 var pluginId = 0;
 
 describe('New Relic API Test', function() {
-  this.timeout(10000);
+  this.timeout(5000);
 
   it('calls the applications api', function(done) {
     api.apps.list(function(error, response, body) {

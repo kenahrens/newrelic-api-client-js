@@ -10,7 +10,7 @@ var quickAssert = function(error, response) {
 }
 
 describe('New Relic Synthetics API Test', function() {
-  this.timeout(10000);
+  this.timeout(5000);
   
   it('calls the synthetics api', function(done) {
     synthetics.getAllMonitors(function(error, response, body) {

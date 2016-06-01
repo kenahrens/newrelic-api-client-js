@@ -103,7 +103,7 @@ describe('New Relic API Test', function() {
   });
 
   it('calls the users api', function(done) {
-    api.users.list(function(error, response, body) {
+    api.users.list(null, function(error, response, body) {
       quickAssert(error, response);
       done();
     });

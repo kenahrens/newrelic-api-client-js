@@ -5,6 +5,7 @@
   "repository": "https://github.com/kenahrens/newrelic-api-test-js",
   "license": "MIT",
   "dependencies": {
+    "config": "^1.21.0",
     "request": "~2.69.0"
   },
   "scripts": {

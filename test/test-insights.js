@@ -1,7 +1,4 @@
-var api = require('../lib/api.js');
 var insights = require('../lib/insights.js');
-var synthetics = require('../lib/synthetics.js');
-
 var assert = require('assert');
 
 var quickAssert = function(error, response) {

@@ -1,9 +1,9 @@
 {
   "newrelic": {
-      "accountId": "",
-      "restKey": "",
-      "adminKey": "",
-      "insightsQueryKey": "",
-      "insightsInsertKey": ""
-    }
+    "accountId": "",
+    "restKey": "",
+    "adminKey": "",
+    "insightsQueryKey": "",
+    "insightsInsertKey": ""
+  }
 }

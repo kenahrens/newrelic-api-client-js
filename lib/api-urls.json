@@ -18,6 +18,10 @@
       "metricNames": "https://api.newrelic.com/v2/applications/{application_id}/instances/{instance_id}/metrics.json",
       "metricData": "https://api.newrelic.com/v2/applications/{application_id}/instances/{instance_id}/metrics/data.json"
     },
+    "appDeployments": {
+      "list": "https://api.newrelic.com/v2/applications/{application_id}/deployments.json",
+      "delete": "https://api.newrelic.com/v2/applications/{application_id}/deployments/{id}.json"
+    },
     "mobile": {
       "list": "https://api.newrelic.com/v2/mobile_applications.json",
       "show": "https://api.newrelic.com/v2/mobile_applications/{id}.json",

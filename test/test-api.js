@@ -64,6 +64,13 @@ describe('New Relic API Test', function() {
     });
   });
 
+  it('gets the deployments for a specific application', function(done) {
+    api.appDeployments.list(appId, function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+
   it('calls the mobile api', function(done) {
     api.mobile.list(function(error, response, body) {
       quickAssert(error, response);

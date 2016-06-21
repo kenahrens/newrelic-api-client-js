@@ -1,6 +1,6 @@
 var insights = require('../lib/insights.js');
 
-var nrql = 'SELECT max(timestamp) - min(timestamp) FROM PageView SINCE 1 month ago FACET session LIMIT 100';
+var nrql = 'SELECT max(timestamp) - min(timestamp) FROM PageView SINCE 1 month ago FACET session LIMIT 1000';
 insights.query(nrql, function(error, response, body) {
   var facets = body.facets;
   var totalTime = 0;
@@ -9,7 +9,8 @@ insights.query(nrql, function(error, response, body) {
     totalTime += sessionTime;
   };
   var avgTime = totalTime / facets.length;
-  console.log('Total time: ' + totalTime);
+  console.log('Total time: ' + totalTime + ' ms');
   console.log('Session count: ' + facets.length);
-  console.log('Average time: ' + avgTime);
+  console.log('Average time: ' + avgTime + ' ms');
+  console.log('Average time: ' + avgTime/1000 + ' sec');
 });

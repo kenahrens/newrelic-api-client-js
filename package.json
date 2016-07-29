@@ -1,6 +1,6 @@
 {
   "name": "newrelic-api-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JavaScript library for working with New Relic APIs",
   "repository": "https://github.com/kenahrens/newrelic-api-client-js",
   "main": "index.js",

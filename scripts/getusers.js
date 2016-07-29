@@ -1,5 +1,4 @@
 var api = require('../lib/api.js');
-var config = require('config');
 var json2csv = require('json2csv');
 
 // Get all the users for an account, output as CSV
@@ -9,7 +8,8 @@ var json2csv = require('json2csv');
 // - filter[email]
 // - page
 var qs = null;
-api.users.list(qs, function(error, response, body) {
+var configId = 'newrelic';
+api.users.list(qs, configId, function(error, response, body) {
   if(response.statusCode == 200) {
     var input = {
       data: body.users,

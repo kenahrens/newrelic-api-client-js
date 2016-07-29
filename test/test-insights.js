@@ -6,12 +6,15 @@ var quickAssert = function(error, response) {
   assert.equal(response.statusCode, 200);
 }
 
+// Global variables
+var configId = 'newrelic';
+
 describe('New Relic Insights API Test', function() {
   this.timeout(5000);
   
   it('calls the query api', function(done) {
     var nrql = 'SELECT count(*) FROM Transaction';
-    insights.query(nrql, function(error, response, body) {
+    insights.query(nrql, configId, function(error, response, body) {
       quickAssert(error, response);
       done();
     });

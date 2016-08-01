@@ -29,5 +29,7 @@ node_modules
 
 *.zip
 
-# Config file
-config.json
+# Ignore user config files except the default
+config/*
+!config/default.json
+!config/custom-environment-variables.json

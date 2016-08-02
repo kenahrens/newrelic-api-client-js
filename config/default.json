@@ -3,7 +3,6 @@
     "accountId": "",
     "restKey": "",
     "adminKey": "",
-    "insightsQueryKey": "",
-    "insightsInsertKey": ""
+    "insightsQueryKey": ""
   }
 }

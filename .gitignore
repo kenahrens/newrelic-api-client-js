@@ -29,6 +29,9 @@ node_modules
 
 *.zip
 
+# Ignore CSV outputfiles
+*.csv
+
 # Ignore user config files except the default
 config/*
 !config/default.json

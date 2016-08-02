@@ -22,14 +22,46 @@ This library uses the npm [config](https://www.npmjs.com/package/config) package
 
 If you configure Environment Variables those will over-ride the values in default.json.
 
-However you can also make your own JSON config file with multiple accounts in there. At runtime you set NODE_ENV to the name of your config, and then in your code you can call the API multiple times with a different configId.
+However you can also make your own JSON config file with multiple accounts in there.
 
 ### Environment Variables
-Set 4 environment variables to the correct values for your account (verify with ))
+Set 4 environment variables to the correct values for your account, this works if you're using a single account. 
 * NEWRELIC_ACCOUNT_ID maps to accountId
 * NEWRELIC_REST_API_KEY maps to restKey
 * NEWRELIC_ADMIN_API_KEY maps to adminKey
 * NEWRELIC_INSIGHTS_QUERY_KEY maps to insightsQueryKey
+
+### Multiple Accounts
+Here is an example of how to setup a custom JSON file with multiple sets of keys. At runtime you would set NODE_ENV to the name of this config.
+```
+{
+  "MasterAccount": {
+    "accountId": "",
+    "restKey": "",
+    "adminKey": "",
+    "insightsQueryKey": ""
+  },
+  "SubAccount1": {
+    "accountId": "",
+    "restKey": "",
+    "adminKey": "",
+    "insightsQueryKey": ""
+  },
+  "SubAccount1": {
+    "accountId": "",
+    "restKey": "",
+    "adminKey": "",
+    "insightsQueryKey": ""
+  }
+}
+```
+
+Then in your code you could make the same API call against multiple accounts (of course you could use a variable or whatever):
+```
+insights.query(nrql, 'MasterAccount', cb);
+insights.query(nrql, 'SubAccount1', cb);
+insights.query(nrql, 'SubAccount1', cb);
+```
 
 ### Execute Tests
 You can also run the test cases which is a way to double check things are configured properly.

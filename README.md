@@ -4,7 +4,7 @@ JavaScript library to test connectivity to New Relic API
 # How to use
 This is just a simple library to test connectivity between NodeJS and New Relic API.
 
-### Initial Setup
+## Initial Setup
 Clone the repository and run npm install which should install dependencies into node_modules
 ```
 kahrens@kenbook8u:~/dev/node$ git clone https://github.com/kenahrens/newrelic-api-test-js.git
@@ -13,12 +13,23 @@ kahrens@kenbook8u:~/dev/node$ cd newrelic-api-test
 kahrens@kenbook8u:~/dev/node/newrelic-api-test$ npm install
 ```
 
+## Setup Your API Keys
+This library uses the npm [config](https://www.npmjs.com/package/config) package to setup your [API Keys](https://rpm.newrelic.com/apikeys). There is a basic default.json that shows the 5 keys you can populate, with an account nicknamed *newrelic*:
+* accountId - you will also see this in the URL bar
+* restKey - overall REST API Key (legacy)
+* adminKey - specific Admin user API Key, used for certain API calls
+* insightsQueryKey - there are keys just for Insights in the Manage Data section
+
+If you configure Environment Variables those will over-ride the values in default.json.
+
+However you can also make your own JSON config file with multiple accounts in there. At runtime you set NODE_ENV to the name of your config, and then in your code you can call the API multiple times with a different configId.
+
 ### Environment Variables
-Set 4 environment variables to the correct values for your account (verify with [API Keys](https://rpm.newrelic.com/apikeys)))
-* NEWRELIC_ACCOUNT_ID - you will also see this in the URL bar
-* NEWRELIC_REST_API_KEY - overall REST Key (legacy)
-* NEWRELIC_ADMIN_API_KEY - specific Admin user API Key, used for certain API calls
-* NEWRELIC_INSIGHTS_QUERY_KEY - there are keys just for Insights in the Manage Data section
+Set 4 environment variables to the correct values for your account (verify with ))
+* NEWRELIC_ACCOUNT_ID maps to accountId
+* NEWRELIC_REST_API_KEY maps to restKey
+* NEWRELIC_ADMIN_API_KEY maps to adminKey
+* NEWRELIC_INSIGHTS_QUERY_KEY maps to insightsQueryKey
 
 ### Execute Tests
 You can also run the test cases which is a way to double check things are configured properly.

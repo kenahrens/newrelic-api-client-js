@@ -47,7 +47,7 @@ Here is an example of how to setup a custom JSON file with multiple sets of keys
     "adminKey": "",
     "insightsQueryKey": ""
   },
-  "SubAccount1": {
+  "SubAccount2": {
     "accountId": "",
     "restKey": "",
     "adminKey": "",
@@ -60,7 +60,7 @@ Then in your code you could make the same API call against multiple accounts (of
 ```
 insights.query(nrql, 'MasterAccount', cb);
 insights.query(nrql, 'SubAccount1', cb);
-insights.query(nrql, 'SubAccount1', cb);
+insights.query(nrql, 'SubAccount2', cb);
 ```
 
 ### Execute Tests

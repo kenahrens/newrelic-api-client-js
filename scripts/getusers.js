@@ -8,7 +8,8 @@ var json2csv = require('json2csv');
 // - filter[email]
 // - page
 var qs = null;
-var configId = 'newrelic';
+var configId = config.get('configArr')[0];
+
 api.users.list(qs, configId, function(error, response, body) {
   if(response.statusCode == 200) {
     var input = {

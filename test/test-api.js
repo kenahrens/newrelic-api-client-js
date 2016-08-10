@@ -1,5 +1,6 @@
-var api = require('../lib/api.js');
-var assert = require('assert');
+const api = require('../lib/api.js');
+const config = require('config');
+const assert = require('assert');
 
 var quickAssert = function(error, response) {
   assert.equal(error, null);
@@ -13,7 +14,7 @@ var quickAssert = function(error, response) {
 // Global variables
 var appId = 0;
 var pluginId = 0;
-var configId = 'newrelic';
+var configId = config.get('configArr')[0];
 
 describe('New Relic API Test', function() {
   this.timeout(5000);

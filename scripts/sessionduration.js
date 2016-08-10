@@ -1,7 +1,7 @@
 var insights = require('../lib/insights.js');
 
 var nrql = 'SELECT max(timestamp) - min(timestamp) FROM PageView SINCE 1 month ago FACET session LIMIT 1000';
-var configId = 'newrelic';
+var configId = config.get('configArr')[0];
 
 insights.query(nrql, configId, function(error, response, body) {
   var facets = body.facets;

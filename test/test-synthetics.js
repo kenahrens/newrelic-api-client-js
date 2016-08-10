@@ -1,5 +1,6 @@
-var synthetics = require('../lib/synthetics.js');
-var assert = require('assert');
+const synthetics = require('../lib/synthetics.js');
+const config = require('config');
+const assert = require('assert');
 
 var quickAssert = function(error, response) {
   assert.equal(error, null);
@@ -8,7 +9,7 @@ var quickAssert = function(error, response) {
 
 // Global variables
 var syntheticsId = 0;
-var configId = 'newrelic';
+var configId = config.get('configArr')[0];
 
 describe('New Relic Synthetics API Test', function() {
   this.timeout(5000);

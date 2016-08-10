@@ -16,7 +16,7 @@ var usedResult = [];
 var plannedResult = [];
 
 // Array of accounts to parse through
-var configArr = ['newrelic'];
+var configArr = ['Demotron'];
 var accountLen = configArr.length;
 
 // This gets run at the end to write out the complete CSV

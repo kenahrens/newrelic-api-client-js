@@ -1,5 +1,6 @@
-var insights = require('../lib/insights.js');
-var assert = require('assert');
+const insights = require('../lib/insights.js');
+const config = require('config');
+const assert = require('assert');
 
 var quickAssert = function(error, response) {
   assert.equal(error, null);
@@ -7,7 +8,7 @@ var quickAssert = function(error, response) {
 }
 
 // Global variables
-var configId = 'newrelic';
+var configId = config.get('configArr')[0];
 
 describe('New Relic Insights API Test', function() {
   this.timeout(5000);

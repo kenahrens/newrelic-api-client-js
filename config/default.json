@@ -1,4 +1,7 @@
 {
+  "configArr": [
+    "newrelic"
+  ],
   "newrelic": {
     "accountId": "",
     "restKey": "",

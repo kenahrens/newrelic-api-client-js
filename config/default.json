@@ -6,6 +6,7 @@
     "accountId": "",
     "restKey": "",
     "adminKey": "",
+    "adminName": "",
     "insightsQueryKey": ""
   }
 }

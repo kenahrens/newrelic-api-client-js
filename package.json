@@ -7,13 +7,15 @@
   "license": "MIT",
   "dependencies": {
     "config": "^1.21.0",
-    "json2csv": "^3.4.2",
     "request": "~2.69.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
   "devDependencies": {
+    "commander": "^2.9.0",
+    "csvtojson": "^1.0.2",
+    "json2csv": "^3.4.2",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3"
   }

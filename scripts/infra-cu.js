@@ -24,7 +24,7 @@ var finalizeUsage = function() {
         totalCount += usageCount;
       }
     }
-    usage['totalCount'] = totalCount;
+    usage['totalHours'] = totalCount;
     usageData[name] = usage;
   }
   
@@ -34,10 +34,12 @@ var finalizeUsage = function() {
   });
   beginKeys = beginKeys.sort();
   beginKeys.splice(0, 0, 'ec2InstanceType', 'totalHours');
-  console.log(beginKeys);
+  
+  // This is the code to setup the CSV file
   var input = {
     data: outputArr,
-    fields: beginKeys 
+    fields: beginKeys,
+    defaultValue: 0
   }
   json2csv(input, function(csvErr, csvData) {
     if (csvErr) {
@@ -80,17 +82,17 @@ var queryCb = function(error, response, body) {
   var begin = body.metadata.beginTime;
   begin = begin.substring(0, begin.indexOf('T'));
   beginKeys.push(begin);
-  console.log('Got response for begin time: ' + begin);
+  console.log('Got response for begin time: ' + begin + ' (' + body.metadata.beginTimeMillis + ')');
 
   // Start with the totalResult (total hosts per hour)
   var totalTS = body.totalResult.timeSeries;
-  var runningCount = 0;
-  for(var i=0; i<totalTS.length; i++) {
+  // var runningCount = 0;
+  for(var i=0; i < totalTS.length; i++) {
     var totalSlice = totalTS[i];
     var totalCount = totalSlice.results[0].uniqueCount;
     
     // Get the slice for each ec2InstanceType
-    runningCount = 0;
+    var runningCount = 0;
     for(var j=0; j < body.facets.length; j++) {
       var facetName = body.facets[j].name;
       var facetCount = body.facets[j].timeSeries[i].results[0].uniqueCount
@@ -102,6 +104,9 @@ var queryCb = function(error, response, body) {
 
     // The difference between runningCount and totalCount is "unknown"
     var unknownCount = totalCount - runningCount;
+    if (runningCount >= totalCount) {
+      unknownCount = 0;
+    }
     recordUniqueCount('unknown', begin, unknownCount);
   }
 
@@ -112,24 +117,26 @@ var queryCb = function(error, response, body) {
   }
 }
 
+// Helper function to calculate milliseconds per day
+var msPerDay = function() {
+  return 24 * 60 * 60 * 1000;
+}
+
 // Helper method to loop over the previous 32 days
 var monthlyLoop = function() {
-  var d = new Date();
-  d.setUTCHours(0, 0, 0, 0);
+  var yesterday = new Date();
+  yesterday.setUTCHours(0, 0, 0, 0);
+  yesterday = yesterday - msPerDay();
   
-  // Loop through the last 32 days
+  // Loop through the last {daysOfData} days
+  console.log('About to query Insights for ' + daysOfData + ' of usage');
   for (var i = 1; i <= daysOfData; i++) {
-    var startDate = d - (i * msPerDay());
+    var startDate = yesterday - (i * msPerDay());
     var endDate = startDate + msPerDay();
     var since = 'SINCE ' + startDate.valueOf() + ' UNTIL ' + endDate.valueOf();
     var nrql = nrqlAWS + ' ' + since;
-    console.log('About to call: ' + nrql);
     insights.query(nrql, configId, queryCb);
   }
-}
-
-var msPerDay = function() {
-  return 24 * 60 * 60 * 1000;
 }
 
 monthlyLoop();

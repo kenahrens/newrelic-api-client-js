@@ -33,7 +33,7 @@ var finalizeUsage = function() {
     return usageData[key];
   });
   beginKeys = beginKeys.sort();
-  beginKeys.splice(0, 0, 'ec2InstanceType', 'totalCount');
+  beginKeys.splice(0, 0, 'ec2InstanceType', 'totalHours');
   console.log(beginKeys);
   var input = {
     data: outputArr,
@@ -55,7 +55,7 @@ var finalizeUsage = function() {
   });
 }
 
-// This puts the unique count for each facet (and other) into usageData[]
+// This puts the unique count for each ec2InstanceType into usageData[]
 var recordUniqueCount = function(name, begin, usageCount) {
   // Get the usage object
   var usage = usageData[name];
@@ -84,12 +84,13 @@ var queryCb = function(error, response, body) {
 
   // Start with the totalResult (total hosts per hour)
   var totalTS = body.totalResult.timeSeries;
+  var runningCount = 0;
   for(var i=0; i<totalTS.length; i++) {
     var totalSlice = totalTS[i];
     var totalCount = totalSlice.results[0].uniqueCount;
     
     // Get the slice for each ec2InstanceType
-    var runningCount = 0;
+    runningCount = 0;
     for(var j=0; j < body.facets.length; j++) {
       var facetName = body.facets[j].name;
       var facetCount = body.facets[j].timeSeries[i].results[0].uniqueCount
@@ -99,9 +100,9 @@ var queryCb = function(error, response, body) {
       runningCount += facetCount;
     }
 
-    // The difference between runningCount and totalCount is "other"
-    var otherCount = runningCount - totalCount;
-    recordUniqueCount('other', begin, otherCount);
+    // The difference between runningCount and totalCount is "unknown"
+    var unknownCount = totalCount - runningCount;
+    recordUniqueCount('unknown', begin, unknownCount);
   }
 
   // Check if we have all the data

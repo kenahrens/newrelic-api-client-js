@@ -5,7 +5,7 @@ const json2csv = require('json2csv');
 const fs = require('fs');
 
 const nrql = 'SELECT count(*) FROM Transaction FACET appName LIMIT 1000';
-var since = ' SINCE 8 week ago';
+var since = ' SINCE 52 week ago';
 
 var configArr = config.get('configArr');
 var accountUsageCount = 0;
@@ -13,6 +13,7 @@ var accountLen = configArr.length;
 var usedResult = [];
 
 console.log('Going to query: ' + accountLen + ' accounts.');
+console.log('With duration: ' + since);
 
 // This gets run at the end to write out the complete CSV
 var finalizeUsage = function() {
@@ -58,6 +59,7 @@ var runUsageQuery = function(fullNrql, configId) {
       };
     } else {
       console.error('Error for account: ' + configId);
+      console.error(error);
     }
 
     // Check if all accounts are finished

@@ -14,6 +14,7 @@ var quickAssert = function(error, response) {
 // Global variables
 var appId = 0;
 var pluginId = 0;
+var componentId = 0;
 var configId = config.get('configArr')[0];
 
 describe('New Relic API Test', function() {
@@ -126,9 +127,26 @@ describe('New Relic API Test', function() {
     });
   });
 
+  it('shows a specific plugin', function(done) {
+    api.plugins.show(pluginId, configId, function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+  
+  it('lists all plugin components', function(done) {
+    api.pluginComponents.list(configId, function(error, response, body) {
+      quickAssert(error, response);
 
-  it('gets the component for a specific plugin', function(done) {
-    api.pluginComponents.list(pluginId, configId, function(error, response, body) {
+      // Get the first component in the list
+      componentId = body.components[0].id;
+      
+      done();
+    })
+  })
+
+  it('gets a specific component', function(done) {
+    api.pluginComponents.show(componentId, configId, function(error, response, body) {
       quickAssert(error, response);
       done();
     });

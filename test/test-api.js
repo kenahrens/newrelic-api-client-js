@@ -18,7 +18,7 @@ var componentId = 0;
 var configId = config.get('configArr')[0];
 
 describe('New Relic API Test', function() {
-  this.timeout(5000);
+  this.timeout(15000);
 
   it('calls the applications api', function(done) {
     api.apps.list(configId, function(error, response, body) {
@@ -134,22 +134,4 @@ describe('New Relic API Test', function() {
     });
   });
   
-  it('lists all plugin components', function(done) {
-    api.pluginComponents.list(configId, function(error, response, body) {
-      quickAssert(error, response);
-
-      // Get the first component in the list
-      componentId = body.components[0].id;
-      
-      done();
-    })
-  })
-
-  it('gets a specific component', function(done) {
-    api.pluginComponents.show(componentId, configId, function(error, response, body) {
-      quickAssert(error, response);
-      done();
-    });
-  });
-
 });

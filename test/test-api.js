@@ -119,18 +119,18 @@ describe('New Relic API Test', function() {
   it('calls the plugins api', function(done) {
     api.plugins.list(configId, function(error, response, body) {
       quickAssert(error, response);
-
-      // Get the first plugin in the list
-      pluginId = body.plugins[0].id;
-
       done();
     });
   });
 
   it('calls the plugins api with a GUID filter', function(done) {
-    var guid = 'com.newrelic.fit.synthetics.monitor.Synthetics';
-    api.plugins.listFilterGuid(configId, guid, function(error, response, body) {
+    var guid = 'com.newrelic.plugins.mysql.instance';
+    api.plugins.listFilterGuid(guid, configId, function(error, response, body) {
       quickAssert(error, response);
+      
+      // Get the first plugin in the list
+      pluginId = body.plugins[0].id;
+
       done();
     });
   });
@@ -140,6 +140,13 @@ describe('New Relic API Test', function() {
       quickAssert(error, response);
       done();
     });
+  });
+
+  it('gets the componetns for this specific plugin', function(done) {
+    api.pluginComponents.listFilterPluginId(pluginId, configId, function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    })
   });
   
 });

@@ -127,7 +127,15 @@ describe('New Relic API Test', function() {
     });
   });
 
-  it('shows a specific plugin', function(done) {
+  it('calls the plugins api with a GUID filter', function(done) {
+    var guid = 'com.newrelic.fit.synthetics.monitor.Synthetics';
+    api.plugins.listFilterGuid(configId, guid, function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
+
+  it('gets a specific plugin', function(done) {
     api.plugins.show(pluginId, configId, function(error, response, body) {
       quickAssert(error, response);
       done();

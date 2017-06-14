@@ -1,3 +1,5 @@
+const config = require('config');
+
 var api = require('../lib/api.js');
 var json2csv = require('json2csv');
 

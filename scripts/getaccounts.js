@@ -38,6 +38,7 @@ function acctFormat(accountInfo,cb) {
     for (acct in accountInfo){
         accountInfo[acct].admin = accountInfo[acct]["primary admin"].first_name + " " + accountInfo[acct]["primary admin"].last_name;
         accountInfo[acct].admin_email= accountInfo[acct]["primary admin"].email;
+        //adding hyperlink to account
         accountInfo[acct].apm_url= "=HYPERLINK(\""+nr_url + accountInfo[acct].id + "/applications\",\""+accountInfo[acct].name+"\")";
         //console.log(accountInfo[acct].apm_url)
 
@@ -47,9 +48,13 @@ function acctFormat(accountInfo,cb) {
 
 var configId = config.get('configArr')[0];
 var partnerId= config.get(configId).partnerId;
-console.log("Processing Config: "+configId);
+console.log("Processing Config: "+configId +' PartnerID: '+partnerId);
 api.partner.list(partnerId, configId, function(error, response, body) {
   if(response.statusCode == 200) {
     acctFormat(body.accounts,outputFile);
+  }
+  else {
+    console.log('error: '+ response.statusCode);
+    console.log(body);
   }
 });

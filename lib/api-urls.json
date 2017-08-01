@@ -1,5 +1,9 @@
 {
   "api": {
+    "partner":{
+      "list": "https://rpm.newrelic.com/api/v2/partners/{partner_id}/accounts",
+      "show": "https://rpm.newrelic.com/api/v2/partners/{partner_id}/accounts/{account_id}" 
+    },
     "apps": {
       "list": "https://api.newrelic.com/v2/applications.json",
       "show": "https://api.newrelic.com/v2/applications/{application_id}.json",

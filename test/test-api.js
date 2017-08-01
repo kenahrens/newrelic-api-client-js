@@ -96,7 +96,7 @@ describe('New Relic API Test', function() {
   });
 
   it('calls the servers api', function(done) {
-    api.servers.list(configId, function(error, response, body) {
+    api.servers.list(null, configId, function(error, response, body) {
       quickAssert(error, response);
       done();
     });

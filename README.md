@@ -72,14 +72,19 @@ Gather the PartnerId from your partnership admin console, and the Partner Rest k
 ```
 {
   "configArr": [
-    "PartnerAccount_name"
+    "PartnerName1", "PartnerName2"
   ],
-  "PartnerAccount_name": {
-    "partnerId": "<PARTNER_ID>",
-    "restKey": "<PARNER_RESTKEY>"
+  "PartnerName1": {
+    "partnerId": "<PARTNER1_ID>",
+    "restKey": "<PARNER1_RESTKEY>"
+  },
+  "PartnerName2": {
+    "partnerId": "<PARTNER2_ID>",
+    "restKey": "<PARNER2_RESTKEY>"
   }
 }
 ```
+
 
 ### Execute Tests
 You can also run the test cases which is a way to double check things are configured properly.

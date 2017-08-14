@@ -20,6 +20,8 @@ This library uses the npm [config](https://www.npmjs.com/package/config) package
 * adminKey - specific Admin user API Key, used for certain API calls
 * insightsQueryKey - there are keys just for Insights in the Manage Data section
 
+
+
 If you configure Environment Variables those will over-ride the values in default.json.
 
 However you can also make your own JSON config file with multiple accounts in there.
@@ -62,6 +64,27 @@ insights.query(nrql, 'MasterAccount', cb);
 insights.query(nrql, 'SubAccount1', cb);
 insights.query(nrql, 'SubAccount2', cb);
 ```
+
+### Partner Account
+
+Gather the PartnerId from your partnership admin console, and the Partner Rest key from the Partnership account.
+
+```
+{
+  "configArr": [
+    "PartnerName1", "PartnerName2"
+  ],
+  "PartnerName1": {
+    "partnerId": "<PARTNER1_ID>",
+    "restKey": "<PARNER1_RESTKEY>"
+  },
+  "PartnerName2": {
+    "partnerId": "<PARTNER2_ID>",
+    "restKey": "<PARNER2_RESTKEY>"
+  }
+}
+```
+
 
 ### Execute Tests
 You can also run the test cases which is a way to double check things are configured properly.

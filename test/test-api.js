@@ -142,11 +142,11 @@ describe('New Relic API Test', function() {
     });
   });
 
-  it('gets the componetns for this specific plugin', function(done) {
+  it('gets the components for this specific plugin', function(done) {
     api.pluginComponents.listFilterPluginId(pluginId, configId, function(error, response, body) {
       quickAssert(error, response);
       done();
     })
   });
-  
+
 });

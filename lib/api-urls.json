@@ -63,6 +63,13 @@
       "show": "https://api.newrelic.com/v2/components/{component_id}.json",
       "metricNames": "https://api.newrelic.com/v2/components/{component_id}/metrics.json",
       "metricData": "https://api.newrelic.com/v2/components/{component_id}/metrics/data.json"
+    },
+    "dashboards": {
+      "list": "https://api.newrelic.com/v2/dashboards.json",
+      "show": "https://api.newrelic.com/v2/dashboards/{id}.json",
+      "create": "https://api.newrelic.com/v2/dashboards.json",
+      "update": "https://api.newrelic.com/v2/dashboards/{id}.json",
+      "delete": "https://api.newrelic.com/v2/dashboards/{id}.json"
     }
   }
 }

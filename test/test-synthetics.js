@@ -12,7 +12,7 @@ var syntheticsId = 0;
 var configId = config.get('configArr')[0];
 
 describe('New Relic Synthetics API Test', function() {
-  this.timeout(5000);
+  this.timeout(15000);
   
   it('gets the list of all monitors', function(done) {
     synthetics.getAllMonitors(configId, function(error, response, body) {

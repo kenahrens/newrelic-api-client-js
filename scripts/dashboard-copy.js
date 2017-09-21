@@ -19,7 +19,8 @@ var chkResult = function(error, response, body) {
 // Print out the URL of the newly created dashboard
 var handleCreate = function(error, response, body) {
   if (chkResult(error, response, body)) {
-    var url = 'http://insights.newrelic.com/accounts/' + program.dest + '/dashboards/' + body.dashboard.id;
+    var destId = config.get(program.dest).accountId;
+    var url = 'http://insights.newrelic.com/accounts/' + destId + '/dashboards/' + body.dashboard.id;
     console.log('Dashboard created: ' + url);
   }
 }

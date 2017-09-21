@@ -25,8 +25,8 @@ var secondDashboardId = 0;
 describe('New Relic Dashboards Test', function() {
   this.timeout(15000);
 
-  it('gets the list of Insights Dashboards', function(done) {
-    dashboards.getAll(1, configId, function(error, response, body) {
+  it('gets the first page of Insights Dashboards', function(done) {
+    dashboards.getPage(1, configId, function(error, response, body) {
       quickAssert(error, response);
 
       // Get the first dashboard in the list

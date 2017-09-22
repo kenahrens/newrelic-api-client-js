@@ -12,9 +12,6 @@ var quickAssert = function(error, response) {
 }
 
 // Global variables
-var appId = 0;
-var pluginId = 0;
-var componentId = 0;
 var configId = config.get('configArr')[0];
 
 // Global variables

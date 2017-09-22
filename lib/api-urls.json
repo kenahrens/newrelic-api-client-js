@@ -67,6 +67,54 @@
     "dashboards": {
       "all": "https://api.newrelic.com/v2/dashboards.json",
       "one": "https://api.newrelic.com/v2/dashboards/{dashboard_id}.json"
+    },
+    "alertsEvents": {
+      "list": "https://api.newrelic.com/v2/alerts_events.json"
+    },
+    "alertsConditions": {
+      "list": "https://api.newrelic.com/v2/alerts_conditions.json",
+      "create": "https://api.newrelic.com/v2/alerts_conditions/policies/{policy_id}.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_conditions/{condition_id}.json'"
+    },
+    "alertsPluginConditions": {
+      "list": "https://api.newrelic.com/v2/alerts_plugins_conditions.json",
+      "create": "https://api.newrelic.com/v2/alerts_plugins_conditions/policies/{policy_id}.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_plugins_conditions/{condition_id}.json"
+    },
+    "alertsExternalServiceConditions": {
+      "list": "https://api.newrelic.com/v2/alerts_external_service_conditions.json",
+      "create": "https://api.newrelic.com/v2/alerts_external_service_conditions/policies/{policy_id}.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_external_service_conditions/{condition_id}.json"
+    },
+    "alertsSyntheticConditions": {
+      "list": "https://api.newrelic.com/v2/alerts_synthetics_conditions.json",
+      "create": "https://api.newrelic.com/v2/alerts_synthetics_conditions/policies/{policy_id}.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_synthetics_conditions/{condition_id}.json"
+    },
+    "alertsNrqlConditions": {
+      "list": "https://api.newrelic.com/v2/alerts_nrql_conditions.json",
+      "create": "https://api.newrelic.com/v2/alerts_nrql_conditions/policies/{policy_id}.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_nrql_conditions/{condition_id}.json"
+    },
+    "alertsPolicies": {
+      "createRead": "https://api.newrelic.com/v2/alerts_policies.json",
+      "updateDelete": "https://api.newrelic.com/v2/alerts_policies/{policy_id}.json"
+    },
+    "alertsChannels": {
+      "createRead": "https://api.newrelic.com/v2/alerts_channels.json",
+      "delete": "https://api.newrelic.com/v2/alerts_channels/{channel_id}.json"
+    },
+    "alertsPolicyChannels": {
+      "updateDelete": "https://api.newrelic.com/v2/alerts_policy_channels.json"
+    },
+    "alertsViolations": {
+      "list": "https://api.newrelic.com/v2/alerts_violations.json"
+    },
+    "alertsIncidents": {
+      "list": "https://api.newrelic.com/v2/alerts_incidents.json"
+    },
+    "alertsEntityConditions": {
+      "readUpdateDelete": "https://api.newrelic.com/v2/alerts_entity_conditions/{entity_id}.json"
     }
   }
 }

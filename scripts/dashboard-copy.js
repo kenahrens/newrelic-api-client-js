@@ -1,35 +1,24 @@
 const dashboards = require('../lib/dashboards.js');
+const helper = require('../lib/helper.js');
 const config = require('config');
 var program = require('commander');
 
-var chkResult = function(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    return true;
-  } else {
-    if (error) {
-      console.error('API error: ' + error);
-    } else {
-      console.error('Bad response code: ', response.statusCode);
-      console.error('HTTP response: ', body);
-    }
-  }
-  return false;
-}
-
 // Print out the URL of the newly created dashboard
 var handleCreate = function(error, response, body) {
-  if (chkResult(error, response, body)) {
+  var rspBody = helper.handleCB(error, response, body);
+  if (rspBody != null) {
     var destId = config.get(program.dest).accountId;
-    var url = 'http://insights.newrelic.com/accounts/' + destId + '/dashboards/' + body.dashboard.id;
+    var url = 'http://insights.newrelic.com/accounts/' + destId + '/dashboards/' + rspBody.dashboard.id;
     console.log('Dashboard created: ' + url);
   }
 }
 
 // Read the source dashboard
 var readDash = function(error, response, body) {
-  if (chkResult(error, response, body)) {
-    console.log('Found source dashboard named: ' + body.dashboard.title);
-    dashboards.create(body, program.dest, handleCreate);
+  var dashboardBody = helper.handleCB(error, response, body);
+  if (dashboardBody != null) {
+    console.log('Found source dashboard named: ' + dashboardBody.dashboard.title);
+    dashboards.create(dashboardBody, program.dest, handleCreate);
   }
 }
 

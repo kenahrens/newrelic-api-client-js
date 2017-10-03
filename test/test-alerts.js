@@ -53,11 +53,11 @@ describe('New Relic Alerts Test', function() {
     });
   });
 
-  // it('gets the list of incidents', function(done) {
-  //   alerts.incidents.list(false, configId, function(error, response, body) {
-  //     quickAssert(error, response);
-  //     done();
-  //   })
-  // });
+  it('gets the first page of incidents', function(done) {
+    alerts.incidents.list(false, 1, configId, function(error, response, body) {
+      quickAssert(error, response);
+      done();
+    });
+  });
 
 });

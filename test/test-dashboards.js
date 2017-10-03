@@ -33,36 +33,36 @@ describe('New Relic Dashboards Test', function() {
     });
   });
 
-  it('gets the first dashboard from the list', function(done) {
-    dashboards.getOne(firstDashboardId, configId, function(error, response, body) {
-      quickAssert(error, response);
-      dashboardBody = body;
-      done();
-    });
-  });
+  // it('gets the first dashboard from the list', function(done) {
+  //   dashboards.getOne(firstDashboardId, configId, function(error, response, body) {
+  //     quickAssert(error, response);
+  //     dashboardBody = body;
+  //     done();
+  //   });
+  // });
 
-  it('creates a copy of the first dashboard', function(done) {
-    dashboardBody.dashboard.title = 'API Copy of ' + dashboardBody.dashboard.title;
-    dashboards.create(dashboardBody, configId, function(error, response, body) {
-      quickAssert(error, response);
-      secondDashboardId = body.dashboard.id;
-      done();
-    });
-  });
+  // it('creates a copy of the first dashboard', function(done) {
+  //   dashboardBody.dashboard.title = 'API Copy of ' + dashboardBody.dashboard.title;
+  //   dashboards.create(dashboardBody, configId, function(error, response, body) {
+  //     quickAssert(error, response);
+  //     secondDashboardId = body.dashboard.id;
+  //     done();
+  //   });
+  // });
 
-  it('updates the title of the copied dashboard', function(done) {
-    dashboardBody.dashboard.title = 'API Update of ' + dashboardBody.dashboard.title;
-    dashboards.update(secondDashboardId, dashboardBody, configId, function(error, response, body) {
-      quickAssert(error, response);
-      done();
-    });
-  });
+  // it('updates the title of the copied dashboard', function(done) {
+  //   dashboardBody.dashboard.title = 'API Update of ' + dashboardBody.dashboard.title;
+  //   dashboards.update(secondDashboardId, dashboardBody, configId, function(error, response, body) {
+  //     quickAssert(error, response);
+  //     done();
+  //   });
+  // });
 
-  it('deletes the copied dashboard', function(done) {
-    dashboards.delete(secondDashboardId, configId, function(error, response, body) {
-      quickAssert(error, response);
-      done();
-    });
-  });
+  // it('deletes the copied dashboard', function(done) {
+  //   dashboards.delete(secondDashboardId, configId, function(error, response, body) {
+  //     quickAssert(error, response);
+  //     done();
+  //   });
+  // });
 
 });

@@ -22,16 +22,16 @@ var secondDashboardId = 0;
 describe('New Relic Dashboards Test', function() {
   this.timeout(15000);
 
-  it('gets the first page of Insights Dashboards', function(done) {
-    dashboards.getPage(1, configId, function(error, response, body) {
-      quickAssert(error, response);
+  // it('gets the first page of Insights Dashboards', function(done) {
+  //   dashboards.getPage(1, configId, function(error, response, body) {
+  //     quickAssert(error, response);
 
-      // Get the first dashboard in the list
-      firstDashboardId = body.dashboards[0].id;
+  //     // Get the first dashboard in the list
+  //     firstDashboardId = body.dashboards[0].id;
 
-      done();
-    });
-  });
+  //     done();
+  //   });
+  // });
 
   // it('gets the first dashboard from the list', function(done) {
   //   dashboards.getOne(firstDashboardId, configId, function(error, response, body) {

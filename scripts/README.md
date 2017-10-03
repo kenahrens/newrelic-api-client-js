@@ -2,6 +2,7 @@
 
 These scripts rely on having the configuration properly set.
 
+* add-channel-to-alerts - Add a particular notification channel to all policies
 * cst-to-config - Helper tool to make a CSV file into a config JSON
 * getusers - Print out the list of users from your account
 * infra-cu - Calculate the compute units (CU) for your infrastructure environment

@@ -116,5 +116,15 @@
     "alertsEntityConditions": {
       "readUpdateDelete": "https://api.newrelic.com/v2/alerts_entity_conditions/{entity_id}.json"
     }
+  },
+  "synthetics": {
+    "monitors": {
+      "createRead": "https://synthetics.newrelic.com/synthetics/api/v3/monitors",
+      "monitor": "https://synthetics.newrelic.com/synthetics/api/v3/monitors/{monitor_id}",
+      "script": "https://synthetics.newrelic.com/synthetics/api/v3/monitors/{monitor_id}/script"
+    },
+    "locations": {
+      "list": "https://synthetics.newrelic.com/synthetics/api/v1/locations"
+    }
   }
 }

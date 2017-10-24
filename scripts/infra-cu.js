@@ -9,7 +9,7 @@ var program = require('commander');
 
 // Standard Insights queries
 const nrqlSystem = 'SELECT uniqueCount(entityId) FROM SystemSample TIMESERIES 1 hour FACET ec2InstanceType LIMIT 100 ';
-const nrqlEC2 = 'SELECT uniqueCount(entityId) FROM ComputeSample WHERE `provider.ec2State` = \'running\' TIMESERIES 1 hour FACET ec2InstanceType LIMIT 100 ';
+const nrqlEC2 = 'SELECT uniqueCount(entityId) FROM ComputeSample WHERE `provider.ec2State` = \'running\' AND provider = \'Ec2Instance\' TIMESERIES 1 hour FACET `provider.ec2InstanceType` LIMIT 100 ';
 const nrqlTimestampSystem = 'SELECT min(timestamp) FROM SystemSample SINCE 751 hours ago';
 const nrqlTimestampEC2 = 'SELECT min(timestamp) FROM ComputeSample SINCE 751 hours ago';
 

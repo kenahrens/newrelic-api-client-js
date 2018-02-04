@@ -47,21 +47,26 @@ csvReader.on('end_parsed', function(csvArr) {
   for (var i=0; i < csvArr.length; i++) {
     var monitorBody = fixMonitorBody(csvArr[i]);
     if (monitorBody != null) {
-      synthetics.createMonitor(monitorBody, program.dest, function createCB(error, response, body) {
-        if (!error && response.statusCode == 201) {
-          console.log('Created:', response.headers.location);
-        } else {
-          if (error) {
-            console.error('error:', error);
-          } else {
-            console.error('bad status code:', response.statusCode);
-            console.error(body);
-          }
-        }
-      });
+      // Space out the calls by 500ms each
+      setTimeout(createMonitor.bind(null, monitorBody), 500*i);
     }
   }
 });
+
+function createMonitor(monitorBody) {
+  synthetics.createMonitor(monitorBody, program.dest, function createCB(error, response, body) {
+    if (!error && response.statusCode == 201) {
+      console.log('Created:', response.headers.location);
+    } else {
+      if (error) {
+        console.error('error:', error);
+      } else {
+        console.error('bad status code:', response.statusCode);
+        console.error(body);
+      }
+    }
+  });
+}
 
 // Setup the commander program
 program

@@ -20,7 +20,7 @@ function outputFile(configId,outputdata){
       console.log('ERROR!');
       console.log(err);
     } else {
-      fs.writeFile(fname,csv);
+      fs.writeFileSync(fname,csv);
     }
   });
 }
@@ -46,7 +46,7 @@ partnerList.forEach(function (configId){
   // var partnerId= config.get(configId).partnerId;
   console.log("Processing Config: " + configId);
 
-  partnerApi.list(configId, function(error, response, body) {
+  partnerApi.list(1, configId, function(error, response, body) {
     if(response.statusCode == 200) {
       acctFormat(configId,body.accounts,outputFile);
     }

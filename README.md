@@ -91,33 +91,60 @@ You can also run the test cases which is a way to double check things are config
 ```
 kahrens:newrelic-api-client-js kahrens$ npm test
 
-> newrelic-api-test@0.0.1 test /Users/kahrens/Documents/github/newrelic-api-client-js
+
+> newrelic-api-client@0.1.3 test /Users/kahrens/Documents/github/newrelic-api-client-js
 > ./node_modules/mocha/bin/mocha
 
 
 
+  New Relic Alerts Test
+    ✓ gets the list of alert events (5397ms)
+    ✓ gets the list of alert policies (195ms)
+    ✓ gets a specific alert policy by name (139ms)
+    ✓ gets the notification channels (159ms)
+    ✓ gets the first page of incidents (957ms)
+
   New Relic API Test
-    ✓ calls the applications api (293ms)
-    ✓ gets a specific application (183ms)
-    ✓ gets the metricNames for a specific application (282ms)
-    ✓ gets the metricData for a specific application (225ms)
-    ✓ gets the hosts for a specific application (212ms)
-    ✓ gets the instances for a specific application (210ms)
-    ✓ calls the mobile api (212ms)
-    ✓ calls the browser api (412ms)
-    ✓ calls the keyTransactions api (178ms)
-    ✓ calls the servers api (188ms)
-    ✓ calls the usages api for apm (193ms)
-    ✓ calls the users api (167ms)
-    ✓ calls the plugins api (227ms)
-    ✓ gets the component for a specific plugin (292ms)
+    ✓ calls the applications api (193ms)
+    ✓ gets a specific application (160ms)
+    ✓ gets the metricNames for a specific application (324ms)
+    ✓ gets the metricData for a specific application (198ms)
+    ✓ gets the hosts for a specific application (202ms)
+    ✓ gets the instances for a specific application (244ms)
+    ✓ gets the deployments for a specific application (143ms)
+    ✓ calls the mobile api (165ms)
+    ✓ calls the browser api (343ms)
+    ✓ calls the keyTransactions api (145ms)
+    ✓ calls the servers api (161ms)
+    ✓ calls the usages api for apm (145ms)
+    ✓ calls the users api (144ms)
+    ✓ calls the plugins api (163ms)
+    ✓ calls the plugins api with a GUID filter (177ms)
+    ✓ gets a specific plugin (153ms)
+    ✓ gets the components for this specific plugin (154ms)
+
+  New Relic Dashboards Test
+    ✓ gets the list of all Insights Dashboards (289ms)
+    ✓ gets the first page of Insights Dashboards (595ms)
+    ✓ gets the first dashboard from the list (266ms)
+    ✓ creates a copy of the first dashboard (632ms)
+    ✓ updates the title of the copied dashboard (614ms)
+    ✓ deletes the copied dashboard (253ms)
 
   New Relic Insights API Test
-    ✓ calls the query api (272ms)
+    ✓ publishes some sample events (240ms)
+    ✓ calls the query api (230ms)
+
+  New Relic Pagination Test
+    ✓ lists all plugin components (1638ms)
+    ✓ gets a specific component (157ms)
 
   New Relic Synthetics API Test
-    ✓ calls the synthetics api (673ms)
+    ✓ gets the list of all monitors (538ms)
+    ✓ gets the list of locations (158ms)
+    ✓ creates a ping monitor (670ms)
+    ✓ deletes the ping monitor we just created (614ms)
 
 
-  16 passing (4s)
+  36 passing (17s)
 ```

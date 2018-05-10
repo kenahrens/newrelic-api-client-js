@@ -18,7 +18,13 @@ var readDash = function(error, response, body) {
   var dashboardBody = helper.handleCB(error, response, body);
   if (dashboardBody != null) {
     console.log('Found source dashboard named: ' + dashboardBody.dashboard.title);
-    dashboards.create(dashboardBody, program.dest, handleCreate);
+    
+    var srcId = config.get(program.src).accountId;
+    var destId = config.get(program.dest).accountId;
+    var newBody = dashboards.updateAccountId(dashboardBody, srcId, destId);
+    console.log(newBody);
+    
+    dashboards.create(newBody, program.dest, handleCreate);
   }
 }
 

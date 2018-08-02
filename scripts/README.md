@@ -11,6 +11,7 @@ These scripts rely on having the configuration properly set.
 * getusers - Print out the list of users from your account
 * infra-cu - Calculate the compute units (CU) for your infrastructure environment
 * insights-usage-detail - Create CSV with Transaction usage by app for your account(s)
+* license-usage - Get a CSV with monthly details of license usage
 * lookup-user - Get the links to a given user's account in all sub accounts
 * sessionduration - Calculate top 1000 session durations from Page View
 * syntetics-usage - Get last month's usage and planned usage from your account(s)

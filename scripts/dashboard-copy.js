@@ -41,9 +41,9 @@ if (!process.argv.slice(7).length) {
 } else {
   // Make sure [from] is in the config
   if (!config.has(program.src)) {
-    console.error('Your config does not have *src* account: ' + program.from);
+    console.error('Your config does not have *src* account: ' + program.src, 'check your NODE_ENV=', process.env.NODE_ENV);
   } else if (!config.has(program.dest)) {
-    console.error('Your config does not have *dest* account: ' + program.to);
+    console.error('Your config does not have *dest* account: ' + program.dest, 'check your NODE_ENV=', process.env.NODE_ENV);
   } else {
     // We have good data so try to read the dashboard
     console.log('Trying to find dashboard: ' + program.dash);

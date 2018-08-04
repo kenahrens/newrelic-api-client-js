@@ -1,0 +1,285 @@
+{
+  "dashboard": {
+    "metadata": {
+      "version": 1
+    },
+    "title": "License Usage 12 months",
+    "icon": "flag",
+    "visibility": "all",
+    "editable": "editable_by_all",
+    "filter": null,
+    "widgets": [
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 1,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT rate(SUM(apmHoursUsed), 1 hour) as usage FROM NrDailyUsage WHERE `productLine` = 'APM' AND `usageType` = 'Host' TIMESERIES 1 day SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "APM Host Usage by Month",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 1,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT sum(apmHoursUsed) / 750 as 'Hosts' FROM NrDailyUsage WHERE `productLine` = 'APM' AND `usageType` = 'Host' SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "APM Hosts",
+          "notes": "This is the number of APM host hours used daily and divided by 750 (standard month size).",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 2,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(apmComputeUnits) as usage FROM NrDailyUsage WHERE `productLine` = 'APM' AND `usageType` = 'Host' TIMESERIES 1 day SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "APM CU by Month",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 2,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT sum(apmComputeUnits) as 'CUs' FROM NrDailyUsage WHERE `productLine` = 'APM' AND `usageType` = 'Host' SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "APM CUs",
+          "notes": "This is simply a sum of the compute units for each month, so the current month is partial.",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 3,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(infrastructureComputeUnits) as usage FROM NrDailyUsage WHERE `productLine` = 'Infrastructure' AND `usageType` = 'Host' TIMESERIES 1 day SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "Infrastructure",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 3,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(infrastructureComputeUnits) as 'CUs' FROM NrDailyUsage WHERE `productLine` = 'Infrastructure' AND `usageType` = 'Host' FACET monthOf(timestamp) SINCE 12 months ago LIMIT 1000"
+          }
+        ],
+        "presentation": {
+          "title": "Infrastructure CUs",
+          "notes": "This is simply a sum of the compute units for each month, so the current month is partial.",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 4,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(insightsTotalEventCount - insightsIncludedEventCount) as usage FROM NrDailyUsage WHERE `productLine` = 'Insights' AND `usageType` = 'Event' TIMESERIES 1 day SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "Insights Paid Event Count",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 4,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(insightsTotalEventCount - insightsIncludedEventCount) / uniqueCount(timestamp) as 'Paid Events' FROM NrDailyUsage WHERE `productLine` = 'Insights' AND `usageType` = 'Event'  SINCE 12 months ago FACET monthOf(timestamp)"
+          }
+        ],
+        "presentation": {
+          "title": "Insights Paid Events",
+          "notes": "This is the number of Insights events stored daily and divided by days in the month. For the current month it estimates the remaining days.",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 5,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(browserPageViewCount) as Pageviews FROM NrDailyUsage WHERE `productLine` = 'Browser' AND `usageType` = 'Application' AND `isPrimaryApp` = 'true' TIMESERIES 1 day FACET monthOf(timestamp) SINCE 12 months ago LIMIT 100"
+          }
+        ],
+        "presentation": {
+          "title": "Browser Page Views",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 5,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(browserPageViewCount) as Pageviews FROM NrDailyUsage WHERE `productLine` = 'Browser' AND `usageType` = 'Application' AND `isPrimaryApp` = 'true' FACET monthOf(timestamp) SINCE 12 months ago LIMIT 100"
+          }
+        ],
+        "presentation": {
+          "title": "Browser Page Views",
+          "notes": "This is simply a sum of the Page Views for each month, so the current month is partial.",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 6,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(syntheticsSuccessCheckCount + syntheticsFailedCheckCount) as 'Checks' FROM NrDailyUsage WHERE `productLine` = 'Synthetics' AND `usageType` = 'Check' AND `syntheticsTypeLabel` != 'Ping' TIMESERIES 1 day FACET monthOf(timestamp) SINCE 12 months ago LIMIT 1000"
+          }
+        ],
+        "presentation": {
+          "title": "Synthetics Checks",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 6,
+          "column": 3
+        },
+        "data": [
+          {
+            "nrql": "SELECT SUM(syntheticsSuccessCheckCount + syntheticsFailedCheckCount) as 'Checks' FROM NrDailyUsage WHERE `productLine` = 'Synthetics' AND `usageType` = 'Check' AND `syntheticsTypeLabel` != 'Ping' FACET monthOf(timestamp) SINCE 12 months ago LIMIT 1000"
+          }
+        ],
+        "presentation": {
+          "title": "Synthetics Checks",
+          "notes": "This is simply a sum of the paid Synthetics checks (does not include free) for each month, so the current month is partial.",
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "faceted_area_chart",
+        "account_id": 1,
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 7,
+          "column": 1
+        },
+        "data": [
+          {
+            "nrql": "SELECT sum(mobileUniqueUsersPerMonth) as 'MAUs' FROM NrDailyUsage WHERE `productLine` = 'Mobile' AND `usageType` = 'Application' FACET monthOf(timestamp) timeseries day SINCE 12 months ago limit 100"
+          }
+        ],
+        "presentation": {
+          "title": "Mobile MAUs",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "markdown",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 7,
+          "column": 3
+        },
+        "data": [
+          {
+            "source": "# Mobile MAUs\n---\nBecause mobile data returns the total number of MAUs each day, you need the number on the last day from the TIMESERIES graph."
+          }
+        ],
+        "presentation": {
+          "title": "",
+          "notes": null
+        }
+      }
+    ]
+  }
+}

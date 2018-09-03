@@ -40,3 +40,6 @@ config/*
 # Editor stuff
 .idea
 .vscode
+
+# Custom scripts
+customScripts

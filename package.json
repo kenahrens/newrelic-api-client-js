@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "config": "^1.21.0",
-    "lodash": "^4.17.4",
+    "lodash": "4.17.11",
     "request": "~2.69.0"
   },
   "scripts": {

@@ -41,7 +41,7 @@ describe('New Relic Alerts Test', function() {
   it('gets a specific alert policy by name', function(done) {
     alerts.policies.list(policyName, configId, function(error, response, body) {
       quickAssert(error, response);
-      assert.equal(body.policies.length, 1, 'Should return 1 policy');
+      assert.notEqual(body.policies.length, 0, 'Should not return 0 policies');
       done();
     });
   });

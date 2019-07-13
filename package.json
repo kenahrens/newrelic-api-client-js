@@ -1,13 +1,13 @@
 {
   "name": "newrelic-api-client",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "JavaScript library for working with New Relic APIs",
   "repository": "https://github.com/kenahrens/newrelic-api-client-js",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "config": "^1.21.0",
-    "lodash": "4.17.11",
+    "lodash": "^4.17.14",
     "request": "2.88.0"
   },
   "scripts": {
@@ -16,7 +16,7 @@
   "devDependencies": {
     "commander": "^2.9.0",
     "csvtojson": "^1.1.9",
-    "json2csv": "^3.4.2",
+    "json2csv": "^4.5.2",
     "mocha": "^5.0.0",
     "sinon": "^1.17.3"
   }

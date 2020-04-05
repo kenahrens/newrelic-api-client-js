@@ -95,12 +95,12 @@ describe('New Relic API Test', function() {
     });
   });
 
-  it('calls the servers api', function(done) {
-    api.servers.list(null, configId, function(error, response, body) {
-      quickAssert(error, response);
-      done();
-    });
-  });
+//  it('calls the servers api', function(done) {
+//    api.servers.list(null, configId, function(error, response, body) {
+//      quickAssert(error, response);
+//      done();
+//    });
+//  });
 
   it('calls the usages api for apm', function(done) {
     api.usages.list('apm', configId, function(error, response, body) {
